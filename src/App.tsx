@@ -1,12 +1,11 @@
-import "./App.css";
-import { ThemeContext } from "./contexts/themeContext";
 import Home from "./pages/Home";
+import Items from "./pages/Items";
 
 function App() {
   return (
-    <ThemeContext.Provider value="theme">
-      <Home />
-    </ThemeContext.Provider>
+    <div className="h-screen min-h-screen">
+      <Items />
+    </div>
   );
 }
 
