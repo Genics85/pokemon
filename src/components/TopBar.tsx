@@ -11,7 +11,7 @@ function TopBar() {
         <div className="w-[100px] absolute left-0 -top-1/2">
           <img className="" src={logo_img} alt="" />
         </div>
-        <p className="text-[20px] font-bold heading">
+        <p className="text-[20px] font-semibold head">
           Poke<span style={{ color: theme }}>book</span>
         </p>
       </div>

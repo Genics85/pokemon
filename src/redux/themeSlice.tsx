@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-type AvailableThemes = "#E85382" | "#39BADF" | "yellow";
+type AvailableThemes = "#E85382" | "#39BADF" | "#E1A725";
 
 type StateType = {
   value: AvailableThemes;
@@ -9,7 +9,7 @@ type StateType = {
 export const themeSlice = createSlice({
   name: "theme",
   initialState: {
-    value: "#39BADF",
+    value: "#E1A725",
   } as StateType,
   reducers: {
     setTheme: (state, action: PayloadAction<AvailableThemes>) => {
