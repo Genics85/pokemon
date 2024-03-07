@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
 import left_arrow from "../assets/icons/left_arrow.svg";
 import right_arrow from "../assets/icons/right_arrow.svg";
-import eye_icon from "../assets/icons/eye_icon.svg";
 
 function Items() {
   const { data: pokemons, isLoading, error } = useGetPokemonsQuery();
