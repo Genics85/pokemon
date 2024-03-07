@@ -12,7 +12,7 @@ function Items() {
 
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);
 
-  const [currentPage, setCurrentPage] = useState<number>(2);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(8);
 
   if (isLoading) return <div>Loading...</div>;
@@ -28,9 +28,11 @@ function Items() {
     <div className="h-full w-full ">
       <TopBar />
       <main
-        className={`px-4 md:px-20 pt-16 pb-10 grid ${
-          itemsPerPage <= 12 ? "md:grid-cols-" + itemsPerPage / 2 : "md:grid-cols-6"
-        }  gap-x-4 gap-y-16 grid-cols-2 `}
+        className={`px-4 md:px-20 pt-16 pb-10 grid grid-cols-2 ${
+          itemsPerPage <= 12
+            ? "md:grid-cols-4"
+            : "md:grid-cols-6"
+        }  gap-x-4 gap-y-16  `}
       >
         {data.map((item: any, i: number) => {
           return <PokemonCard url={item?.url} name={item?.name} key={i} />;
