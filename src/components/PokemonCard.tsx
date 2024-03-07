@@ -40,8 +40,8 @@ function PokemonCard({ name, url }: PokemonCardType) {
       <div className={` rounded-[15px] relative h-[115px] bg-[#f1f1f1]`}>
         <div className="absolute  bottom-2 w-full flex justify-center">
           <img
-            src={pokemonDetails?.sprites?.front_default}
-            className="w-[120px]"
+            src={pokemonDetails?.sprites?.other?.dream_world.front_default}
+            className="h-[150px]"
             alt=""
           />
         </div>
@@ -62,7 +62,11 @@ function PokemonCard({ name, url }: PokemonCardType) {
           <img src={eye_icon} alt="" />
         </div>
       </button>
-      <SideDrawer pokemonDetails={pokemonDetails} state={sideDrawer} close={closeSideDrawer} />
+      <SideDrawer
+        pokemonDetails={pokemonDetails}
+        state={sideDrawer}
+        close={closeSideDrawer}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useClickOutsideToClose } from "../hooks/useClickOutsideToClose";
 import back_arrow from "../assets/icons/back_arrow.svg";
 import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
+import getImageDominantColor from "../utils/getDominantColorGradient";
 
 type SideDrawerType = {
   close: () => void;
@@ -38,7 +39,14 @@ function SideDrawer({ state, close, pokemonDetails }: SideDrawerType) {
         ref={refObj}
         className=" flex relative flex-col p-2 items-center gap-4 overflow-y-auto bg-white w-full md:w-1/3 h-full "
       >
-        <div className="rounded-md relative bg-blue-300 h-[260px] w-full p-2">
+        <div
+          style={{
+            background: getImageDominantColor(
+              pokemonDetails?.sprites?.other?.dream_world.front_default
+            ),
+          }}
+          className="rounded-md relative h-[260px] w-full p-2"
+        >
           <button
             onClick={close}
             className="rounded-md bg-white size-10 flex items-center justify-center"
@@ -46,8 +54,8 @@ function SideDrawer({ state, close, pokemonDetails }: SideDrawerType) {
             <img src={back_arrow} alt="" />
           </button>
           <img
-            src={pokemonDetails?.sprites?.front_default}
-            className="absolute"
+            src={pokemonDetails?.sprites?.other?.dream_world.front_default}
+            className="absolute left-1/2 -translate-x-[50%] -bottom-6 h-[200px]"
             alt=""
           />
         </div>
