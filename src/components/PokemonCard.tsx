@@ -1,10 +1,10 @@
-import charizard from "../assets/images/charizard.png";
 import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
 import eye_icon from "../assets/icons/eye_icon.svg";
 
 import { useState } from "react";
 import { useGetPokemonDetailsQuery } from "../redux/pokemonApi";
+import SideDrawer from "./SideDrawer";
 
 type PokemonCardType = {
   name: string;
@@ -12,11 +12,22 @@ type PokemonCardType = {
 };
 
 function PokemonCard({ name, url }: PokemonCardType) {
+  const [sideDrawer, setSideDrawer] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);
 
-  const { data: pokemonDetails } = useGetPokemonDetailsQuery(url);
-  console.log(pokemonDetails);
+  const closeSideDrawer = () => {
+    setSideDrawer(false);
+  };
+
+  const {
+    data: pokemonDetails,
+    isLoading,
+    error,
+  } = useGetPokemonDetailsQuery(url);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.toString()}</div>;
 
   return (
     <div
@@ -28,12 +39,17 @@ function PokemonCard({ name, url }: PokemonCardType) {
     >
       <div className={` rounded-[15px] relative h-[115px] bg-[#f1f1f1]`}>
         <div className="absolute  bottom-2 w-full flex justify-center">
-          <img src={pokemonDetails?.sprites?.front_default} className="w-[120px]" alt="" />
+          <img
+            src={pokemonDetails?.sprites?.front_default}
+            className="w-[120px]"
+            alt=""
+          />
         </div>
       </div>
       <p className="head font-semibold self-center text-[20px]">{name}</p>
 
       <button
+        onClick={() => setSideDrawer(true)}
         className={`${
           isHovered ? "flex " : "hidden"
         } z-10 p-2 text-white w-full absolute top-[100%] rounded-b-[14px] bg-white left-0`}
@@ -46,6 +62,7 @@ function PokemonCard({ name, url }: PokemonCardType) {
           <img src={eye_icon} alt="" />
         </div>
       </button>
+      <SideDrawer pokemonDetails={pokemonDetails} state={sideDrawer} close={closeSideDrawer} />
     </div>
   );
 }

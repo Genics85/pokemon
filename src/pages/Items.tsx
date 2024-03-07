@@ -1,13 +1,9 @@
 import TopBar from "../components/TopBar";
 import PokemonCard from "../components/PokemonCard";
-import SideDrawer from "../components/SideDrawer";
-import {
-  useGetPokemonsQuery,
-} from "../redux/pokemonApi";
+import { useGetPokemonsQuery } from "../redux/pokemonApi";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
-import ThemeModal from "../components/ThemeModal";
 
 function Items() {
   const { data: pokemons, isLoading, error } = useGetPokemonsQuery();
@@ -91,8 +87,6 @@ function Items() {
           <option value={24}>24</option>
         </select>
       </div>
-      <SideDrawer />
-      <ThemeModal/>
     </div>
   );
 }

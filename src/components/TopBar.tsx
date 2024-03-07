@@ -2,8 +2,16 @@ import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
 import logo_img from "../assets/images/homepage_board.png";
 import search_icon from "../assets/icons/search_icon_items.svg";
+import ThemeModal from "./ThemeModal";
+import { useState } from "react";
 
 function TopBar() {
+  const [themeModal, setThemeModal] = useState<boolean>(false);
+
+  const closeThemeModal = () => {
+    setThemeModal(false);
+  };
+
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);
   return (
     <div className="h-[60px] flex justify-between items-center py-1 px-8 bg-white">
@@ -25,10 +33,12 @@ function TopBar() {
           <img src={search_icon} alt="" />
         </div>
       </div>
-      <div
+      <button
+        onClick={() => setThemeModal(true)}
         style={{ backgroundColor: theme }}
         className="size-7 rounded-full ring-offset-2  ring-[2px] ring-gray-500"
-      ></div>
+      ></button>
+      <ThemeModal state={themeModal} close={closeThemeModal} />
     </div>
   );
 }
