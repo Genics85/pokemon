@@ -4,7 +4,9 @@ import { useGetPokemonsQuery } from "../redux/pokemonApi";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
-import noise from "../assets/images/noise.png"
+import left_arrow from "../assets/icons/left_arrow.svg";
+import right_arrow from "../assets/icons/right_arrow.svg";
+import eye_icon from "../assets/icons/eye_icon.svg";
 
 function Items() {
   const { data: pokemons, isLoading, error } = useGetPokemonsQuery();
@@ -23,30 +25,27 @@ function Items() {
     currentPage * itemsPerPage
   );
 
-
-
   return (
-    <div
-
-      className="h-full w-full "
-    >
+    <div className="h-full w-full ">
       <TopBar />
       <main
-        className={` px-20 pt-16 pb-10 grid ${
-          itemsPerPage <= 12 ? "grid-cols-" + itemsPerPage / 2 : "grid-cols-6"
-        }  gap-x-4 gap-y-16`}
+        className={`px-4 md:px-20 pt-16 pb-10 grid ${
+          itemsPerPage <= 12 ? "md:grid-cols-" + itemsPerPage / 2 : "md:grid-cols-6"
+        }  gap-x-4 gap-y-16 grid-cols-2 `}
       >
         {data.map((item: any, i: number) => {
           return <PokemonCard url={item?.url} name={item?.name} key={i} />;
         })}
       </main>
-      <div className="flex justify-between px-20">
+      <div className=" sticky bottom-1 flex justify-between px-4 md:px-20">
         <div className="flex gap-2">
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
             className={`size-6 px-4 flex font-semibold items-center justify-center rounded-md bg-[#e1e1e1]`}
           >
-            {"<"}
+            <div className=" shrink-0">
+              <img src={left_arrow} alt="" />
+            </div>
           </button>
           {[currentPage, currentPage + 1, currentPage + 2, currentPage + 3].map(
             (item, i) => {
@@ -78,7 +77,9 @@ function Items() {
             onClick={() => setCurrentPage(currentPage + 1)}
             className={` size-6 px-4 flex font-semibold items-center justify-center rounded-md bg-[#e1e1e1] `}
           >
-            {">"}
+            <div className=" shrink-0">
+              <img src={right_arrow} alt="" />
+            </div>
           </button>
         </div>
         <select

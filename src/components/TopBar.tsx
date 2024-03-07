@@ -14,7 +14,7 @@ function TopBar() {
 
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);
   return (
-    <div className="sticky top-0 h-[60px] z-20 flex justify-between items-center px-8 bg-white">
+    <div className="sticky top-0 h-[60px] pt-2 z-20 flex justify-between items-center px-8 bg-white">
       <div className="relative pl-[105px]">
         <div className="w-[100px] absolute left-0 -top-1/2">
           <img className="" src={logo_img} alt="" />
@@ -23,7 +23,7 @@ function TopBar() {
           Poke<span style={{ color: theme }}>book</span>
         </p>
       </div>
-      <div className="relative">
+      <div className="relative hidden md:block">
         <input
           type="text"
           placeholder="Enter pokemon name"

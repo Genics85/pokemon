@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
 import { setTheme } from "../redux/themeSlice";
 import { useClickOutsideToClose } from "../hooks/useClickOutsideToClose";
-import { RefObject, useRef } from "react";
+import {  useRef } from "react";
 
 type ThemeModalType = {
     state:boolean,
@@ -18,7 +18,7 @@ function ThemeModal({state,close}:ThemeModalType) {
 
   return (
     <div
-      className={`fixed top-0 flex z-20 items-end md:items-center justify-center bg-black bg-opacity-40 backdrop-blur-[2px] ${
+      className={`fixed top-0 flex z-20 items-center justify-center bg-black bg-opacity-40 backdrop-blur-[2px] ${
         state ? "" : "hidden"
       } w-full top-0 right-0 h-screen max-h-full`}
     >

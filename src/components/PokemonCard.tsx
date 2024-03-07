@@ -34,6 +34,7 @@ function PokemonCard({ name, url }: PokemonCardType) {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={()=>setIsHovered(!isHovered)}
       className={`${
         isHovered ? "rounded-b-none" : ""
       } bg-white rounded-[20px] p-2 max-h-[255px] h-fit flex flex-col gap-2 relative`}

@@ -1,16 +1,16 @@
 import noise from "./assets/images/noise.png";
-import Items from "./pages/Items";
+import AppRouter from "./routing/routing";
 function App() {
   return (
     <div
       style={{
         backgroundImage: `url(${noise})`,
         backgroundPosition: "center",
-        backgroundBlendMode:"color"
+        backgroundBlendMode: "color",
       }}
       className="bg-opacity-95 min-h-screen flex items-start bg-[#f1f1f1] justify-center pb-5"
     >
-      <Items />
+      <AppRouter />
     </div>
   );
 }

@@ -2,13 +2,13 @@ import { useSelector } from "react-redux";
 import homepage_board from "../assets/images/homepage_board.png";
 import search_icon from "../assets/icons/search_icon.svg";
 import { StoreRootState } from "../redux/store";
-import noise from "../assets/images/noise.png"
+import { Link } from "react-router-dom";
 
 function Home() {
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);
 
   return (
-    <main className="flex flex-col h-full gap-16 items-center justify-center ">
+    <main className="flex flex-col w-full h-full gap-16 items-center justify-center self-center">
       <div className="flex flex-col items-center">
         <div className=" w-[300px]">
           <img src={homepage_board} alt="" />
@@ -21,24 +21,27 @@ function Home() {
           can think of.
         </p>
       </div>
-      <div className="flex flex-col items-center space-y-4">
-        <div className="relative">
+      <div className="flex flex-col w-full items-center space-y-4 ">
+        <div className="relative flex items-center w-[380px] justify-center">
           <input
             type="text"
             className={
-              "border-[5px] rounded-full p-2 pl-4 w-[415px] h-[60px] outline-none "
+              "border-[5px] w-full rounded-full p-2 pl-4  h-[60px] outline-none "
             }
             style={{ borderColor: theme }}
             placeholder="Enter pokemon name"
           />
-          <button
+          <Link
+            to={"/pokemons"}
             className=" absolute top-1/2 shadow-md -translate-y-[50%] right-3 size-9 rounded-full flex items-center justify-center"
             style={{ background: theme }}
           >
             <img src={search_icon} alt="" />
-          </button>
+          </Link>
         </div>
-        <p className="underline">View all</p>
+        <Link to={"/pokemons"} className="underline">
+          View all
+        </Link>
       </div>
     </main>
   );
