@@ -31,56 +31,61 @@ function PokemonCard({ name, url }: PokemonCardType) {
   if (error) return <div>Error: {error.toString()}</div>;
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={()=>setIsHovered(!isHovered)}
-      className={`${
-        isHovered ? "rounded-b-none" : ""
-      } bg-white rounded-[20px] p-2 max-h-[255px] h-fit flex flex-col gap-2 relative`}
-    >
-      <div className={` rounded-[15px] relative h-[115px] bg-[#f1f1f1]`}>
-        <div className="absolute  bottom-2 w-full flex justify-center">
-          <img
-            src={pokemonDetails?.sprites?.other?.dream_world.front_default}
-            className="h-[150px]"
-            alt=""
-          />
-        </div>
-      </div>
-      <p className="head font-semibold self-center text-[20px]">{name}</p>
-      <div className="flex gap-3 justify-center">
-        {pokemonDetails?.types.map((type: any, i: number) => {
-          let typeName: "grass" | "water" = type.type.name;
-          return (
-            <div key={i} className="px-3 rounded-full flex bg-[#f1f1f1] text-[13px]">
-              <span className="s flex-shrink">{typeToEmoji[typeName]}</span>
-              <p>{typeName}</p>
-            </div>
-          );
-        })}
-      </div>
-
-      <button
+    <>
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onClick={() => setSideDrawer(true)}
         className={`${
-          isHovered ? "flex " : "hidden"
-        } z-10 p-2 text-white w-full absolute top-[100%] rounded-b-[14px] bg-white left-0`}
+          isHovered ? "rounded-b-none" : ""
+        } bg-white rounded-[20px] p-2 max-h-[255px] h-fit flex flex-col gap-2 relative`}
       >
-        <div
-          style={{ backgroundColor: theme }}
-          className=" flex items-center p-2 justify-between rounded-[14px] w-full"
-        >
-          <p>View Pokemon</p>
-          <img src={eye_icon} alt="" />
+        <div className={` rounded-[15px] relative h-[115px] bg-[#f1f1f1]`}>
+          <div className="absolute  bottom-2 w-full flex justify-center">
+            <img
+              src={pokemonDetails?.sprites?.other?.dream_world.front_default}
+              className="h-[150px]"
+              alt=""
+            />
+          </div>
         </div>
-      </button>
+        <p className="head font-semibold self-center text-[20px]">{name}</p>
+        <div className="flex gap-3 justify-center">
+          {pokemonDetails?.types.map((type: any, i: number) => {
+            let typeName: "grass" | "water" = type.type.name;
+            return (
+              <div
+                key={i}
+                className="px-3 rounded-full flex bg-[#f1f1f1] text-[13px]"
+              >
+                <span className="s flex-shrink">{typeToEmoji[typeName]}</span>
+                <p>{typeName}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={() => setSideDrawer(true)}
+          className={`${
+            isHovered ? "flex " : "hidden"
+          } z-10 p-2 text-white w-full absolute top-[100%] rounded-b-[14px] bg-white left-0`}
+        >
+          <div
+            style={{ backgroundColor: theme }}
+            className=" flex items-center p-2 justify-between rounded-[14px] w-full"
+          >
+            <p>View Pokemon</p>
+            <img src={eye_icon} alt="" />
+          </div>
+        </button>
+      </div>
       <SideDrawer
         pokemonDetails={pokemonDetails}
         state={sideDrawer}
         close={closeSideDrawer}
       />
-    </div>
+    </>
   );
 }
 
