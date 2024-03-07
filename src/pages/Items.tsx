@@ -4,6 +4,7 @@ import { useGetPokemonsQuery } from "../redux/pokemonApi";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
+import noise from "../assets/images/noise.png"
 
 function Items() {
   const { data: pokemons, isLoading, error } = useGetPokemonsQuery();
@@ -22,13 +23,16 @@ function Items() {
     currentPage * itemsPerPage
   );
 
-  console.log(pokemons);
+
 
   return (
-    <div className="h-full ">
+    <div
+
+      className="h-full w-full "
+    >
       <TopBar />
       <main
-        className={` px-20 py-16 grid ${
+        className={` px-20 pt-16 pb-10 grid ${
           itemsPerPage <= 12 ? "grid-cols-" + itemsPerPage / 2 : "grid-cols-6"
         }  gap-x-4 gap-y-16`}
       >
@@ -36,7 +40,7 @@ function Items() {
           return <PokemonCard url={item?.url} name={item?.name} key={i} />;
         })}
       </main>
-      <div className="flex justify-between mt-5 px-20">
+      <div className="flex justify-between px-20">
         <div className="flex gap-2">
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
@@ -79,7 +83,7 @@ function Items() {
         </div>
         <select
           onChange={(e) => setItemsPerPage(parseInt(e.target.value))}
-          className="rounded-md p-1 "
+          className="rounded-md p-1 bg-white border-[2px]"
         >
           <option value={8}>8</option>
           <option value={12}>12</option>

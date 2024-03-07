@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import homepage_board from "../assets/images/homepage_board.png";
 import search_icon from "../assets/icons/search_icon.svg";
 import { StoreRootState } from "../redux/store";
+import noise from "../assets/images/noise.png"
 
 function Home() {
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);

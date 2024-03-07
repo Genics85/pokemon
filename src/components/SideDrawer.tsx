@@ -4,6 +4,7 @@ import back_arrow from "../assets/icons/back_arrow.svg";
 import { useSelector } from "react-redux";
 import { StoreRootState } from "../redux/store";
 import getImageDominantColor from "../utils/getDominantColorGradient";
+import typeToEmoji from "../utils/pokemonTypesWithEmojis";
 
 type SideDrawerType = {
   close: () => void;
@@ -45,7 +46,7 @@ function SideDrawer({ state, close, pokemonDetails }: SideDrawerType) {
               pokemonDetails?.sprites?.other?.dream_world.front_default
             ),
           }}
-          className="rounded-md relative h-[260px] w-full p-2"
+          className="rounded-md relative h-[240px] w-full p-2"
         >
           <button
             onClick={close}
@@ -60,14 +61,24 @@ function SideDrawer({ state, close, pokemonDetails }: SideDrawerType) {
           />
         </div>
         <p className="head font-semibold text-[40px]">{pokemonDetails?.name}</p>
-        <div className="py-3 bg-[#f1f1f1] flex flex-col items-center justify-center w-full">
+        <div className="flex gap-3 justify-center">
+          {pokemonDetails?.types.map((type: any, i: number) => {
+            let typeName: "grass" | "water" = type.type.name;
+            return (
+              <div key={i} className="px-3 rounded-full bg-[#f1f1f1]">
+                {typeToEmoji[typeName]} {typeName}
+              </div>
+            );
+          })}
+        </div>
+        <div className="py-3  bg-[#f1f1f1] flex flex-col items-center justify-center w-full">
           <div className="bg-white w-full flex items-center justify-center">
             <p className="head text-[20px] font-bold">{details}</p>
           </div>
           <div
             className={` ${
               details == "About" ? "flex" : "hidden"
-            }  flex-col py-3 `}
+            }  flex-col pt-3 `}
           >
             <div className="flex gap-5 p-2 border-b-[2px]">
               <p>Height</p>
@@ -131,19 +142,23 @@ function SideDrawer({ state, close, pokemonDetails }: SideDrawerType) {
               details == "Similar" ? "flex" : "hidden"
             }  flex-col py-3 `}
           >
-            <div className="flex gap-5 p-2 border-b-[2px]">
-              <p>Height</p>
-              <p className="head text-[18px] font-semibold">
-                {pokemonDetails?.height}m
+            <div
+              className={` bg-white rounded-[20px] p-2 w-[140px] h-[130px] flex flex-col gap-2 relative`}
+            >
+              <div className={` rounded-[15px] relative h-[90px] bg-[#f1f1f1]`}>
+                <div className="absolute bottom-2 w-full flex justify-center">
+                  <img
+                    src={
+                      pokemonDetails?.sprites?.other?.dream_world.front_default
+                    }
+                    className="h-[100px]"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <p className="head font-semibold self-center text-[20px]">
+                Wizard
               </p>
-            </div>
-            <div className="flex gap-5 p-2 border-b-[2px]">
-              <p>Weight</p>
-              <p className="head text-[18px] font-semibold">13.0Kg</p>
-            </div>
-            <div className="flex gap-5 p-2">
-              <p>Abilities</p>
-              <p className="head text-[18px] font-semibold">1.0m</p>
             </div>
           </div>
         </div>

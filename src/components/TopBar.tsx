@@ -14,7 +14,7 @@ function TopBar() {
 
   const { value: theme } = useSelector((state: StoreRootState) => state.theme);
   return (
-    <div className="h-[60px] flex justify-between items-center py-1 px-8 bg-white">
+    <div className="sticky top-0 h-[60px] z-20 flex justify-between items-center px-8 bg-white">
       <div className="relative pl-[105px]">
         <div className="w-[100px] absolute left-0 -top-1/2">
           <img className="" src={logo_img} alt="" />

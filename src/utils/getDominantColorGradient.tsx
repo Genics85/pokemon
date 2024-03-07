@@ -12,12 +12,10 @@ const getImageDominantColor = (imageUrl: string): string => {
     img.onload = () => {
       const color = colorThief.getColor(img);
       setDominantColor(
-        `linear-gradient(to bottom, rgb(${color[0]}, ${color[1]}, ${
-          color[2]
-        }), ${getLighterColor(
+        `linear-gradient(to bottom, ${getLighterColor(
           `rgb(${color[0]}, ${color[1]}, ${color[2]})`,
-          20
-        )}) `
+          90
+        )},rgb(${color[0]}, ${color[1]}, ${color[2]})) `
       );
     };
   }, [imageUrl]);

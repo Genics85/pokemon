@@ -5,6 +5,7 @@ import eye_icon from "../assets/icons/eye_icon.svg";
 import { useState } from "react";
 import { useGetPokemonDetailsQuery } from "../redux/pokemonApi";
 import SideDrawer from "./SideDrawer";
+import typeToEmoji from "../utils/pokemonTypesWithEmojis";
 
 type PokemonCardType = {
   name: string;
@@ -47,6 +48,17 @@ function PokemonCard({ name, url }: PokemonCardType) {
         </div>
       </div>
       <p className="head font-semibold self-center text-[20px]">{name}</p>
+      <div className="flex gap-3 justify-center">
+        {pokemonDetails?.types.map((type: any, i: number) => {
+          let typeName: "grass" | "water" = type.type.name;
+          return (
+            <div key={i} className="px-3 rounded-full flex bg-[#f1f1f1] text-[13px]">
+              <span className="s flex-shrink">{typeToEmoji[typeName]}</span>
+              <p>{typeName}</p>
+            </div>
+          );
+        })}
+      </div>
 
       <button
         onClick={() => setSideDrawer(true)}
