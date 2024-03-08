@@ -6,9 +6,8 @@ function App() {
       style={{
         backgroundImage: `url(${noise})`,
         backgroundPosition: "center",
-        backgroundBlendMode: "color",
       }}
-      className="bg-opacity-95 min-h-screen flex items-start bg-[#f1f1f1] justify-center pb-5"
+      className="bg-opacity-95 bg-blend-color min-h-screen flex items-start bg-[#f1f1f1] justify-center pb-5"
     >
       <AppRouter />
     </div>
