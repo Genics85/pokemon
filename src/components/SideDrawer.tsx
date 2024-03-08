@@ -71,7 +71,7 @@ function SideDrawer({ state, close, pokemonDetails }: SideDrawerType) {
             );
           })}
         </div>
-        <div className="py-3  bg-[#f1f1f1] flex flex-col items-center justify-center w-full">
+        <div className="py-3 bg-gradient-to-l to-white from-white via-[#f1f1f1] flex flex-col items-center justify-center w-full">
           <div className="bg-white w-full flex items-center justify-center">
             <p className="head text-[20px] font-bold">{details}</p>
           </div>
