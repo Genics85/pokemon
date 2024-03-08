@@ -22,7 +22,7 @@ function Home() {
         </p>
       </div>
       <div className="flex flex-col w-full items-center space-y-4 ">
-        <div className="relative flex items-center w-[360px] md:[400px] justify-center">
+        <div className="relative flex items-center w-[350px] md:[400px] justify-center">
           <input
             type="text"
             className={
