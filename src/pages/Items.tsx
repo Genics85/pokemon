@@ -29,9 +29,7 @@ function Items() {
       <TopBar />
       <main
         className={`px-4 md:px-20 pt-16 pb-10 grid grid-cols-2 ${
-          itemsPerPage <= 12
-            ? "md:grid-cols-4"
-            : "md:grid-cols-6"
+          itemsPerPage <= 12 ? "md:grid-cols-4" : "md:grid-cols-6"
         }  gap-x-4 gap-y-16  `}
       >
         {data.map((item: any, i: number) => {
@@ -41,7 +39,12 @@ function Items() {
       <div className=" sticky bottom-1 flex justify-between px-4 md:px-20">
         <div className="flex gap-2">
           <button
-            onClick={() => setCurrentPage(currentPage - 1)}
+            onClick={() => {
+              if (currentPage > 1) {
+                setCurrentPage(currentPage - 1);
+              }
+              return;
+            }}
             className={`size-6 px-4 flex font-semibold items-center justify-center rounded-md bg-[#e1e1e1]`}
           >
             <div className=" shrink-0">
@@ -75,7 +78,12 @@ function Items() {
             {totalPages}
           </button>
           <button
-            onClick={() => setCurrentPage(currentPage + 1)}
+            onClick={() => {
+              if (currentPage < totalPages - 3) {
+                setCurrentPage(currentPage + 1);
+              }
+              return;
+            }}
             className={` size-6 px-4 flex font-semibold items-center justify-center rounded-md bg-[#e1e1e1] `}
           >
             <div className=" shrink-0">
