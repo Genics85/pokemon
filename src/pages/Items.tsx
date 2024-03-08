@@ -36,7 +36,7 @@ function Items() {
           return <PokemonCard url={item?.url} name={item?.name} key={i} />;
         })}
       </main>
-      <div className=" sticky bottom-1 flex justify-between px-4 md:px-20">
+      <div className=" sticky bottom-1 flex justify-between items-center px-4 md:px-20">
         <div className="flex gap-2">
           <button
             onClick={() => {
@@ -73,7 +73,7 @@ function Items() {
             style={{
               backgroundColor: currentPage == totalPages ? theme : "#e1e1e1",
             }}
-            className={`size-6 px-4 flex font-semibold items-center justify-center rounded-md bg-[#e1e1e1]`}
+            className={`size-6 px-4 hidden md:flex font-semibold items-center justify-center rounded-md bg-[#e1e1e1]`}
           >
             {totalPages}
           </button>
